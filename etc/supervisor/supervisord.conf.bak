@@ -1,0 +1,27 @@
+[supervisord]
+nodaemon=true
+
+[program:nginx]
+command=nginx -g "daemon off;"
+stderr_logfile=/dev/stderr
+stderr_logfile_maxbytes=0
+
+[program:php-fpm]
+command=php-fpm7.1 --nodaemonize
+
+[program:postfix]
+process_name	= master
+directory	= /etc/postfix
+command		= /usr/sbin/postfix -c /etc/postfix start
+startsecs	= 0
+autorestart	= true
+
+[program:sshd]
+command=/usr/sbin/sshd -D -e
+autorestart=true
+startretries=3
+
+[program:crond]
+user=root
+autorestart=true
+command=cron -f

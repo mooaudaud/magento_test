@@ -1,0 +1,43 @@
+version: "3.1"
+services:
+  magento-begin:
+    build: .
+    image: magento-begin
+    container_name: magento-begin
+    working_dir: /application
+    restart: always
+    # volumes:
+    #  - ./application:/application/
+    ports:
+      - "8085:80"
+#   mysql:
+#     image: mysql:5.7
+#     container_name: mysql
+#     command: --default-authentication-plugin=mysql_native_password
+#     restart: always
+#     ports:
+#     - "3306:3306"
+#     - "33060:33060"
+#     environment:
+#       MYSQL_ROOT_PASSWORD: password
+#     networks:
+#         "172_23_0_0_24":
+#           ipv4_address: 172.23.0.2
+#   redis:
+#     image: redis:alpine
+#     restart: always
+#     networks:
+#       "172_20_0_0_24":
+#         ipv4_address: 172.20.0.2
+
+# networks:
+#   "172_23_0_0_24":
+#     ipam:
+#       driver: default
+#       config:
+#         - subnet: 172.23.0.0/24
+#   "172_20_0_0_24":
+#     ipam:
+#       driver: default
+#       config:
+#         - subnet: 172.20.0.0/24
